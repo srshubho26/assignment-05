@@ -19,11 +19,15 @@
             font-optical-sizing: auto;
             font-style: normal;
         }
+
+        .ans{
+            transition: .3s;
+        }
     </style>
 </head>
 <body>
     <header class="sticky top-0 left-0 z-10 w-full">
-        <nav class="px-3 py-6 bg-[#F9F7F3ea] backdrop-blur-sm">
+        <nav class="px-3 py-6 bg-[#fffaefea] backdrop-blur-md">
             <div class="max-w-[1150px] mx-auto w-full flex flex-wrap justify-center gap-5 sm:justify-between items-center">
                 <button id="home-navigator" class="px-5 sm:px-8 py-2 sm:py-3 bg-[#B4F461] rounded-lg font-semibold text-lg sm:text-xl text-[#111111] order-2 sm:order-1">Home</button>
 
@@ -43,40 +47,102 @@
     </header>
 
     <main>
-        <div class="max-w-[1150px] mx-auto w-full mt-20 px-2">
+        <div class="max-w-[1150px] mx-auto w-full mt-20 break-words px-2">
             <h1 class="font-bold text-3xl text-[#111111] my-10">Important FAQ</h1>
-            <div>
-                <div class="collapse collapse-arrow border rounded-md mb-2 border-stone-300">
-                    <input type="radio" name="my-accordion-2" checked="checked" />
-                    <div class="collapse-title text-base sm:text-xl font-semibold">What is the Document Object Model (DOM)?</div>
-                    <div class="collapse-content">
-                        <p>hello</p>
-                    </div>
-                </div>
 
-                <div class="collapse collapse-arrow border rounded-md mb-2 border-stone-300">
-                    <input type="radio" name="my-accordion-2" />
-                    <div class="collapse-title text-base sm:text-xl font-semibold">How do you select an element from the DOM?</div>
-                    <div class="collapse-content">
-                        <p>hello</p>
+            <div id="faq-container">
+                <article class="border rounded-md mb-2 border-stone-300 p-6">
+                    <div class="flex justify-between items-center">
+                        <h4 class="text-base sm:text-2xl font-semibold basis-[calc(100%-30px)]">What is the Document Object Model (DOM)?</h4>
+                        <button id="faq1" class="transition w-6 h-6 bg-[url(img/angle-down.svg)] bg-center rotate-180"></button>
                     </div>
-                </div>
 
-                <div class="collapse collapse-arrow border rounded-md mb-2 border-stone-300">
-                    <input type="radio" name="my-accordion-2" />
-                    <div class="collapse-title text-base sm:text-xl font-semibold">What is event delegation in the context of DOM and why is it useful?</div>
-                    <div class="collapse-content">
-                        <p>hello</p>
+                    <div style="height: auto;" class="overflow-hidden ans faq1">
+                        <div class="mt-5">
+                            <p>In a webpage, every element is treated as an object. If we think about JavaScript object, there are properties, methods or nested objects in an object. Like JavaScript object, we can access an element from webpage using its different property and method. For example, we can access the 'text' of a 'p' tag using JavaScript with the property name 'innerText'. We can also access a child of a parent element just like a nested object. So DOM is an organized hierarchy of elements inside a webpage so that we can easily access and interact with them.</p>
+                        </div>
                     </div>
-                </div>
+                </article>
 
-                <div class="collapse collapse-arrow border rounded-md mb-2 border-stone-300">
-                    <input type="radio" name="my-accordion-2" />
-                    <div class="collapse-title text-base sm:text-xl font-semibold">How do you manipulate and element's attributes and styles using the DOM?</div>
-                    <div class="collapse-content">
-                        <p>hello</p>
+                <article class="border rounded-md mb-2 border-stone-300 p-6">
+                    <div class="flex justify-between items-center">
+                        <h4 class="text-base sm:text-2xl font-semibold basis-[calc(100%-30px)]">How do you select an element from the DOM?</h4>
+                        <button id="faq2" class="transition w-6 h-6 bg-[url(img/angle-down.svg)] bg-center"></button>
                     </div>
-                </div>
+
+                    <div style="height: 0;" class="overflow-hidden ans faq2">
+                        <div class="mt-5">
+                            <p class="mb-4">A DOM element can be selected in different ways. We can use HTML class, id, tag etc. It is described below - </p>
+                        <p class="mb-4">
+                            <strong>getElementById:</strong> It is a way of selecting a specific HTML element by its id. It is used to select a single HTML element.<br><strong>E.g.</strong> document.getElementById("demo");
+                        </p>
+
+                        <p class="mb-4">
+                            <strong>getElementsByClassName:</strong> It is a way of selecting multiple elements with same class name. It returns a 'HTMLCollection' containing multiple elements.<br><strong>E.g.</strong> document.getElementsByClassName("demo");
+                        </p>
+
+                        <p class="mb-4">
+                            <strong>getElementsByTagName:</strong> It is also a way of selecting multiple elements. It selects multiple elements with same tag.<br><strong>E.g.</strong> document.getElmentsByTagName("img");
+                        </p>
+
+                        <p class="mb-4">
+                            <strong>querySelector:</strong> It is a way of selecting specific element using CSS selector.<br><strong>E.g.</strong> document.querySelector(".demo");<br><strong>Note:</strong> If there are more than one element with same identifier, querySelector will select the first one.
+                        </p>
+
+                        <p>
+                            <strong>querySelectorAll:</strong> It is a way of selecting multiple elements using CSS selector.<br><strong>E.g.</strong> document.querySelectorAll(".demo");
+                        </p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="border rounded-md mb-2 border-stone-300 p-6">
+                    <div class="flex justify-between items-center">
+                        <h4 class="text-base sm:text-2xl font-semibold basis-[calc(100%-30px)]">What is event delegation in the context of DOM and why is it useful?</h4>
+                        <button id="faq3" class="transition w-6 h-6 bg-[url(img/angle-down.svg)] bg-center"></button>
+                    </div>
+
+                    <div style="height: 0;" class="overflow-hidden ans faq3">
+                        <div class="mt-5">
+                            <p class="mb-4">Event delegation is a technique used to handle multiple child elements with a single event listener to a common parent.</p>
+
+                            <p><strong>Importance of event delegation:</strong> Event delegation is useful as it reduces the number of event listener. So we can use only one event listener to handle multiple child element. Suppose there is a 'div' containing three 'buttons'. If an event listener is attached with the 'div', we can encounter any of the three 'button' elements exculsively with the 'target' property when the event is triggered. Without event delegation, we'll have to write an event listener for each button. It is unimaginable to write an event for each element if there are ten or twenty elements. But we don't have be worried as we have event delegation to save us. No matter how many children a parent element contains, event delegation can handle them with just one event listener.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="border rounded-md mb-2 border-stone-300 p-6">
+                    <div class="flex justify-between items-center">
+                        <h4 class="text-base sm:text-2xl font-semibold basis-[calc(100%-30px)]">How do you manipulate an element's attributes and styles using the DOM?</h4>
+                        <button id="faq4" class="transition w-6 h-6 bg-[url(img/angle-down.svg)] bg-center"></button>
+                    </div>
+
+                    <div style="height: 0;" class="overflow-hidden ans faq4">
+                        <div class="mt-5">
+                        <p class="mb-4">There are bunch of ways to manipulate an element's attributes and styles using the DOM.</p>
+
+                        <p class="mb-4">
+                            <strong>setAttribute & getAttribute:</strong> The 'setAttribute' method is used to set attribute to a DOM element. It has two arguments. First contains attribute name and the second is for attribute value.<br>
+                            <strong>E.g. </strong>document.getElmentById("demo").setAttribute("title", "Hello World");<br>
+                            The getAttribute returns the attribute value of a DOM element.<br>
+                            <strong>E.g.</strong> document.getElmentById("demo").getAttribute("title");<br>
+                            It'll return 'null' if the given attribute isn't present in the element.
+                        </p>
+
+                        <p class="mb-4">
+                            <strong>className & classList:</strong> These two are used to modify the classes of a DOM element. 'className' is used to modify completely the value of class attribute. On the other side, classList is used to add, remove or toggle a single class of a DOM element.<br>
+                            <strong>E.g.</strong> document.getElmentById("demo").className = "";<br>
+                            document.getElmentById("demo").classList.add("hello");
+                        </p>
+
+                        <p>
+                            <strong>Using css properties:</strong> We can modify and add new inline css to a DOM element.<br>
+                            <strong>E.g.</strong> document.getElmentById("demo").style.backgroundColor = "red";<br>
+                            document.getElmentById("demo").width = "250px";
+                        </p>
+                        </div>
+                    </div>
+                </article>
             </div>
         </div>
     </main>
