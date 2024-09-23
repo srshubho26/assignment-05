@@ -1,5 +1,8 @@
+// Home to Blog page navigator
+pageNavigator("blog-navigator", "blog.html");
+
 // Navigate between Donation and History
-function navigatorInit(btnId, tabId){
+function tabNavigatorInit(btnId, tabId){
     document.getElementById(btnId).addEventListener("click", function(){
         document.querySelector("button.active").className = "px-5 sm:px-8 py-2 sm:py-4 bg-white border border-[#111111B3] rounded-lg font-semibold text-lg sm:text-xl text-[#111111B3]";
         
@@ -10,8 +13,8 @@ function navigatorInit(btnId, tabId){
     });
 }
 
-navigatorInit("donation-navigator", "donation-tab");
-navigatorInit("history-navigator", "history-tab");
+tabNavigatorInit("donation-navigator", "donation-tab");
+tabNavigatorInit("history-navigator", "history-tab");
 
 // Donation functionality
 function donationInit(btnId, fieldId, areaDonated, titleId){
@@ -21,7 +24,7 @@ function donationInit(btnId, fieldId, areaDonated, titleId){
         const donationOfCard = parseFloat(document.getElementById(areaDonated).innerText);
 
         if(isNaN(amountOfDonation)){
-            alert("Please enter a valid amount");
+            alert("Invalid Donation Amount!");
             return;
         }
         if(amountOfDonation<1){
@@ -66,47 +69,19 @@ donationInit("quota-submit", "quota-input", "totalOfQuota", "quota-title");
 
 
 // History making function
-const months = ['January', 'February', 'March', 'April', 'May', 'June', 'August', 'September', 'October', 'November', 'December']
 function addHistory(title, amount){
-    const date = new Date(Date.now());
-
-    const month = date.getMonth();
-    let dayOfMonth = date.getDate();
-    dayOfMonth = dayOfMonth<10 ? '0'+dayOfMonth : dayOfMonth;
-    const year = date.getFullYear();
-
-    let hour = date.getHours();
-    const amPm = hour > 11 ? 'PM' : 'AM';
-    hour = hour > 12 ? hour - 12 : hour;
-    hour = hour === 0 ? 12 : hour;
-    hour = hour < 10 ? '0'+hour : hour;
-
-    let minute = date.getMinutes();
-    minute = minute < 10 ? '0'+minute : minute;
-
     const div = document.createElement("div");
-    div.className = "border border-[#1111111A] rounded-xl p-4 sm:p-8 text-left w-full mb-6";
+    div.className = "border border-[#1111111A] rounded-xl p-4 sm:p-8 text-left max-w-[1150px] mx-auto w-full mb-6";
     div.innerHTML = `<h4 class="text-xl font-bold text-[#111111]">
         ${amount} Taka is Donated for ${title}
     </h4>
     <p class="text-base text-[#111111B3] mt-4">
-        Date: ${months[month]} ${dayOfMonth}, ${year} | <span class="inline-block">${hour}:${minute} ${amPm}</span>
+        ${formatedDate()}
     </p>`;
 
     document.getElementById("history-tab").appendChild(div);
 }
 
-
-// Closing modal
-document.getElementById("close-modal").addEventListener("click", function(){
-    document.getElementById("modal").classList.add("opacity-0");
-    document.querySelector("#modal>div").classList.add("scale-0");
-
-    setTimeout(function(){
-        document.getElementById("modal").classList.add("hidden");
-        document.body.classList.remove("overflow-hidden");
-    }, 100);
-});
 
 // Modal showing function
 function showModal(){
@@ -118,4 +93,13 @@ function showModal(){
     }, 100);
 }
 
+// Closing modal
+document.getElementById("close-modal").addEventListener("click", function(){
+    document.getElementById("modal").classList.add("opacity-0");
+    document.querySelector("#modal>div").classList.add("scale-0");
 
+    setTimeout(function(){
+        document.getElementById("modal").classList.add("hidden");
+        document.body.classList.remove("overflow-hidden");
+    }, 100);
+});
