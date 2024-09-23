@@ -1,5 +1,5 @@
 // Blog to home page navigator
-pageNavigator("home-navigator", "/");
+pageNavigator("home-navigator", "/assignment-05");
 
 document.getElementById("faq-container").addEventListener('click', function(e){
     const target = e.target;
