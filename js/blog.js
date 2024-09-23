@@ -23,8 +23,6 @@ document.getElementById("faq-container").addEventListener('click', function(e){
         }
     }
 
-    
-
     setTimeout(function(){
         ansDiv.style.height = height + "px";
     }, 10);
