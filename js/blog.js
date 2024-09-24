@@ -8,7 +8,7 @@ document.getElementById("faq-container").addEventListener('click', function(e){
     const faqClass = target.id;
 
     const ansDiv = document.querySelector("div." + faqClass);
-    const height = document.querySelector("div." + faqClass+" > div").clientHeight;
+    const height = document.querySelector("div." + faqClass+" > div").clientHeight + 20;
 
     const allAns = document.querySelectorAll("article div.ans");
     for(const _ans of allAns){
@@ -29,5 +29,5 @@ document.getElementById("faq-container").addEventListener('click', function(e){
 
     setTimeout(function(){
         ansDiv.style.height = "auto";
-    }, 400);
+    }, 700);
 });
